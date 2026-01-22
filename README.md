@@ -59,7 +59,7 @@ Before writing DAX, the following steps were considered:
 - Averages tenure at the department level
 - Includes only current employees
 
-
+```DAX
 Average Tenure per Department =
 CALCULATE(
     AVERAGEX(
@@ -73,6 +73,7 @@ CALCULATE(
     ALLEXCEPT(EmployeeData, EmployeeData[Department]),
     ISBLANK(EmployeeData[EndDate])
 )
+```
 
 ##2️⃣ Department Tenure Rank
 
@@ -81,6 +82,7 @@ Ranks all departments based on average tenure
 Higher tenure receives a higher rank
 
 Dense ranking is used
+```DAX
 Department Tenure Rank =
 RANKX(
     ALL(EmployeeData[Department]),
@@ -89,7 +91,7 @@ RANKX(
     DESC,
     Dense
 )
-
+```
 3️⃣ Department vs Company Performance
 
 Calculates department average performance
@@ -97,6 +99,7 @@ Calculates department average performance
 Compares it against the overall company average
 
 Positive value indicates above-average performance
+```DAX
 Dept vs Company Performance =
 CALCULATE(
     AVERAGE(EmployeeData[PerformanceRating]),
